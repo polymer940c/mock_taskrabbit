@@ -8,6 +8,18 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    - Category.all.each do |category| 
-      = link_to category.name, tasks_path( category: category.name )
-    = yield
+
+    %nav.navbar.navbar-default
+      .container
+        .navbar-header
+          = link_to "taskrabbit", root_path, class: 'navbar-brand'
+
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            - Category.all.each do |category| 
+              %li= link_to category.name, tasks_path( category: category.name ), class: ""
+          %ul.nav.navbar-nav.navbar-right
+            %li= link_to "new task", new_task_path, class: ""
+
+    .container 
+      = yield
