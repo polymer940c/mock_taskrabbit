@@ -1,8 +1,10 @@
 =simple_form_for( @task, html: { class: "" }) do |f| 
-  = f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }
-  = f.input :title,       label: "task title"
+  = f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, class: "form-control form-group"
+
+  = f.input :title,       label: "title"
   = f.input :description, label: "task description"
-  = f.input :company,     label: "task company"
-  = f.input :url,         label: "task url"
+  .form-inline
+    = f.input :company, input_html: { style: "margin-right: 24px;" },    label: "task company",  label_html: { style: "display:block;"}
+    = f.input :url,         label: "task url",      label_html: { style: "display:block;"}
   %br/
   = f.button :submit, class: 'btn btn-primary'
