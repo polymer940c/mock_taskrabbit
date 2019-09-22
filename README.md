@@ -52,5 +52,10 @@ Things you may want to cover:
   index, show, new, create, edit, update, destroy,
   // set up their view files 
 
-  
+  // create category
+  rails g model category name:string
+  rake db:migrate 
+
+  rails g migration add_category_id_to_tasks category_id:integer 
+
 ``` 
